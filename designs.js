@@ -9,21 +9,27 @@ var color = document.getElementById("colorPicker").value;
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid(event) {
 
 // Your code goes here!
 //to get value of Height and width 
 var height = document.getElementById("inputHeight").value;
 var width = document.getElementById("inputWidth").value;
 
-// listen for submit event
+// listen for submit event and build grid
 var form = document.getElementById("form");
-form.addEventListener("submit");
+form.addEventListener("submit", function makeGrid() {
+    for (row = 0; row <= height; row++ ) {
+        for (column = 0; column <= width; column++) {
+            newPixel;
+        };
+    };
+});
 
 // create a pixel square and class assignment
-var newPixel = document.createElement("div");
-newPixel.className = "pixel";
-
+function createNewPixel(){
+    var newPixel = document.createElement("div");
+    newPixel.className = "pixel";
+};
 //create CSS properties for pixel class
 var pixelClass = document.querySelector(".pixel");
 pixelClass.style.cssText = "border: 1px solid black; width : 5px; height : 5px;";
@@ -31,6 +37,3 @@ pixelClass.style.cssText = "border: 1px solid black; width : 5px; height : 5px;"
 //add pixel into canvas table
 var tableCanvas = document.querySelector("table");
 tableCanvas.appendChild(newPixel);
-
-}
-
