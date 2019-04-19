@@ -16,11 +16,11 @@ var height = document.getElementById("inputHeight").value;
 var width = document.getElementById("inputWidth").value;
 
 // listen for submit event and build grid
-var form = document.getElementById("form");
-form.addEventListener("submit", function makeGrid() {
+var gridSize = document.getElementById("sizePicker");
+gridSize.addEventListener("submit", function makeGrid() {
     for (row = 0; row <= height; row++ ) {
         for (column = 0; column <= width; column++) {
-            newPixel;
+            createNewPixel();
         };
     };
 });
@@ -29,11 +29,12 @@ form.addEventListener("submit", function makeGrid() {
 function createNewPixel(){
     var newPixel = document.createElement("div");
     newPixel.className = "pixel";
-};
+
 //create CSS properties for pixel class
-var pixelClass = document.querySelector(".pixel");
-pixelClass.style.cssText = "border: 1px solid black; width : 5px; height : 5px;";
+    var pixelClass = document.querySelector(".pixel");
+    pixelClass.style.cssText = "border: 1px solid black; width : 5px; height : 5px;";
 
 //add pixel into canvas table
-var tableCanvas = document.querySelector("table");
-tableCanvas.appendChild(newPixel);
+    var tableCanvas = document.querySelector("table");
+    tableCanvas.appendChild(newPixel);
+};
