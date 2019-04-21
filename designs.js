@@ -1,22 +1,23 @@
-//ver 0.5
+//ver 0.9
 
 // Select color input
-//this gets the color value from the selector
-var color = document.getElementById("colorPicker").value;
 
 // Select size input
 
 // Your code goes here!
 
-
-// listen for submit event and build grid
-// When size is submitted by the user, call makeGrid()
-var gridSize = document.getElementById("sizePicker");
+//color cell
+function colorCell(event) {
+    //this gets the color value from the selector
+    var color = document.getElementById("colorPicker").value;
+    event.target.style.backgroundColor = color;
+};
 
 //make grid function
-gridSize.addEventListener("submit", function makeGrid() {
-    event.preventDefault();
+function makeGrid() {
     var table = document.getElementById("pixelCanvas");
+    //reset table on new submit
+    table.innerHTML = "";
     //to get value of Height and width 
     var height = document.getElementById("inputHeight").value;
     var width = document.getElementById("inputWidth").value;
@@ -36,18 +37,19 @@ gridSize.addEventListener("submit", function makeGrid() {
             rowNumber.appendChild(newColumn);
         };
         //add event listner to each cell
-        newColumn.addEventListener("click", colorCell(event));
+        rowNumber.addEventListener("click", colorCell);
     };
     
-});
-
-
-//color cell
-function colorCell(event) {
-    var color = document.getElementById("colorPicker").value;
-    event.target.style.backgroundColor = color;
 };
 
+
+// listen for submit event and build grid
+// When size is submitted by the user, call makeGrid()
+var gridSize = document.getElementById("sizePicker");
+gridSize.addEventListener("submit", function (event){
+    event.preventDefault();
+    makeGrid();
+});
 
 
 
