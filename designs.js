@@ -14,30 +14,27 @@ var color = document.getElementById("colorPicker").value;
 var gridSize = document.getElementById("sizePicker");
 
 //make grid function
-gridSize.addEventListener("submit", function makeGrid() {
+gridSize.addEventListener("submit", function makeGrid(event) {
+    event.preventDefault();
     var table = document.getElementById("pixelCanvas");
-    var grid = "";
     //to get value of Height and width 
     var height = document.getElementById("inputHeight").value;
     var width = document.getElementById("inputWidth").value;
     //loop for each row
-    for (row = 0; row < height; row++ ) {
+    for (row = 1; row <= height; row++ ) {
+        //create and place new row
+        var newRow = document.createElement("tr");
+        newRow.setAttribute("id", "row "+ row);
+        table.appendChild(newRow);
+
         //loop for each column
-        for (column = 0; column < width; column++) {
+        for (column = 1; column <= width; column++) {
+        //create new cell in row
+            var newColumn = document.createElement("td");
+            var rowNumber = document.getElementById("row " + row);
+            rowNumber.appendChild(newColumn);
         };
     };
 });
 
-// create a pixel square and class assignment
-function createNewPixel(){
-    var newPixel = document.createElement("div");
-    newPixel.className = "pixel";
 
-//create CSS properties for pixel class
-    var pixelClass = document.querySelector(".pixel");
-    pixelClass.style.cssText = "border: 1px solid black; width : 5px; height : 5px;";
-
-//add pixel into canvas table
-    var tableCanvas = document.querySelector("table");
-    tableCanvas.appendChild(newPixel);
-}
