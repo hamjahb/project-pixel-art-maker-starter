@@ -8,11 +8,6 @@ Built with: HTML, CSS and JavaScript.
 
  A single-page web app that allows users to draw pixel art on a customizable canvas.
 
-## Table of Contents
-
-* [Project_Description](#Project description)
-* [Instructions](#instructions)
-
 ## Instructions
 
 1: Download or clone the Repository.
