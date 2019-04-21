@@ -1,4 +1,4 @@
-//ver 0.2
+//ver 0.5
 
 // Select color input
 //this gets the color value from the selector
@@ -14,7 +14,7 @@ var color = document.getElementById("colorPicker").value;
 var gridSize = document.getElementById("sizePicker");
 
 //make grid function
-gridSize.addEventListener("submit", function makeGrid(event) {
+gridSize.addEventListener("submit", function makeGrid() {
     event.preventDefault();
     var table = document.getElementById("pixelCanvas");
     //to get value of Height and width 
@@ -22,19 +22,32 @@ gridSize.addEventListener("submit", function makeGrid(event) {
     var width = document.getElementById("inputWidth").value;
     //loop for each row
     for (row = 1; row <= height; row++ ) {
-        //create and place new row
+        //create and place new row and row ID
         var newRow = document.createElement("tr");
         newRow.setAttribute("id", "row "+ row);
         table.appendChild(newRow);
 
         //loop for each column
         for (column = 1; column <= width; column++) {
-        //create new cell in row
+        //create new cell in individual rows
             var newColumn = document.createElement("td");
+            //newColumn.setAttribute("id", "row: " + row + " column: " + column);
             var rowNumber = document.getElementById("row " + row);
             rowNumber.appendChild(newColumn);
         };
+        //add event listner to each cell
+        newColumn.addEventListener("click", colorCell(event));
     };
+    
 });
+
+
+//color cell
+function colorCell(event) {
+    var color = document.getElementById("colorPicker").value;
+    event.target.style.backgroundColor = color;
+};
+
+
 
 
