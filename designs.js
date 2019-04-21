@@ -6,26 +6,27 @@ var color = document.getElementById("colorPicker").value;
 
 // Select size input
 
-
-// When size is submitted by the user, call makeGrid()
-
-
 // Your code goes here!
+
+
+// listen for submit event and build grid
+// When size is submitted by the user, call makeGrid()
+var gridSize = document.getElementById("sizePicker");
+
 //make grid function
-function makeGrid(event) {
+gridSize.addEventListener("submit", function makeGrid() {
+    var table = document.getElementById("pixelCanvas");
+    var grid = "";
     //to get value of Height and width 
     var height = document.getElementById("inputHeight").value;
     var width = document.getElementById("inputWidth").value;
-    for (row = 0; row <= height; row++ ) {
-        for (column = 0; column <= width; column++) {
-            createNewPixel();
+    //loop for each row
+    for (row = 0; row < height; row++ ) {
+        //loop for each column
+        for (column = 0; column < width; column++) {
         };
     };
-};
-
-// listen for submit event and build grid
-var gridSize = document.getElementById("sizePicker");
-gridSize.addEventListener("submit", makeGrid(event));
+});
 
 // create a pixel square and class assignment
 function createNewPixel(){
